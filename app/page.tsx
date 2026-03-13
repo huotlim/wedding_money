@@ -463,7 +463,7 @@ export default function Home() {
               By Amount {sortKey === "amount" ? (sortDir === "desc" ? "↓" : "↑") : ""}
             </button>
             <button
-              className={`lp-sort-btn${sortKey === "created_at" && sortKey !== "amount" ? " active" : ""}`}
+              className={`lp-sort-btn${sortKey === "created_at" ? " active" : ""}`}
               onClick={() => handleSort("created_at")}
             >
               By Date {sortKey === "created_at" ? (sortDir === "desc" ? "↓" : "↑") : ""}
