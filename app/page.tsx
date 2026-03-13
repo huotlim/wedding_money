@@ -342,11 +342,55 @@ const styles = `
   @media (max-width: 700px) {
     .lp-title { font-size: 32px; }
     .lp-stat { max-width: none; }
-    .lp-th:nth-child(1),
-    .lp-td:nth-child(1) { display: none; }
-    .lp-th:nth-child(4),
-    .lp-td:nth-child(4) { display: none; }
     .lp-msg { max-width: 120px; }
+    
+  }
+
+  /* Phone: transform table into stacked cards for small screens */
+  @media (max-width: 600px) {
+    .lp-main { padding: 20px 12px 40px; }
+    .lp-toolbar { gap: 8px; }
+    .lp-search { font-size: 14px; }
+
+    .lp-table { display: block; }
+    .lp-thead { display: none; }
+
+    .lp-tbody tr {
+      display: block;
+      background: #fff;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border-radius: 6px;
+      border: 1px solid #efe6de;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+
+    .lp-tbody tr:hover { background: #fff; }
+
+    .lp-td {
+      display: block;
+      padding: 6px 0;
+      border: none;
+    }
+
+    .lp-td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 11px;
+      color: #c9a96e;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .lp-guest { gap: 8px; }
+    .lp-avatar { width: 40px; height: 40px; font-size: 16px; }
+    .lp-amount { font-size: 18px; }
+    .lp-msg { max-width: 100%; white-space: normal; overflow: visible; text-overflow: unset; }
+    .lp-date { font-size: 13px; }
+    .lp-id { font-size: 12px; padding: 4px 10px; }
+
+    .lp-footer { flex-direction: column; gap: 8px; align-items: flex-start; padding: 12px; }
   }
 `;
 
@@ -484,11 +528,11 @@ export default function Home() {
                 <tbody>
                   {Array.from({ length: 6 }).map((_, i) => (
                     <tr key={i} className="lp-skeleton-row">
-                      <td><div className="lp-skel" style={{ width: 30 }} /></td>
-                      <td><div className="lp-skel" style={{ width: 140 }} /></td>
-                      <td><div className="lp-skel" style={{ width: 70 }} /></td>
-                      <td><div className="lp-skel" style={{ width: 180 }} /></td>
-                      <td><div className="lp-skel" style={{ width: 100 }} /></td>
+                      <td data-label="#"><div className="lp-skel" style={{ width: 30 }} /></td>
+                      <td data-label="Guest"><div className="lp-skel" style={{ width: 140 }} /></td>
+                      <td data-label="Amount"><div className="lp-skel" style={{ width: 70 }} /></td>
+                      <td data-label="Message"><div className="lp-skel" style={{ width: 180 }} /></td>
+                      <td data-label="Date"><div className="lp-skel" style={{ width: 100 }} /></td>
                     </tr>
                   ))}
                 </tbody>
@@ -528,28 +572,28 @@ export default function Home() {
                     <tbody className="lp-tbody">
                       {filtered.map((g, index) => (
                         <tr key={g.id} style={{ animationDelay: `${index * 0.03}s` }}>
-                          <td className="lp-td">
+                          <td className="lp-td" data-label="#">
                             <span className="lp-id">{g.id}</span>
                           </td>
-                          <td className="lp-td">
+                          <td className="lp-td" data-label="Guest">
                             <div className="lp-guest">
                               <div className="lp-avatar">{initials(g.guest_name)}</div>
                               <span className="lp-guest-name">{g.guest_name}</span>
                             </div>
                           </td>
-                          <td className="lp-td">
+                          <td className="lp-td" data-label="Amount">
                             <span className="lp-amount">
                               <span className="lp-amount-sym">$</span>
                               {Number(g.amount).toLocaleString()}
                             </span>
                           </td>
-                          <td className="lp-td">
+                          <td className="lp-td" data-label="Message">
                             {g.message
                               ? <span className="lp-msg">"{g.message}"</span>
                               : <span className="lp-no-msg">—</span>
                             }
                           </td>
-                          <td className="lp-td">
+                          <td className="lp-td" data-label="Date">
                             <span className="lp-date">
                               {new Date(g.created_at).toLocaleString()}
                             </span>
