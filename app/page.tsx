@@ -140,6 +140,8 @@ const styles = `
     color: #c9a96e;
   }
 
+  .lp-toolbar-btns { display: flex; gap: 8px; }
+
   .lp-sort-btn {
     padding: 10px 16px;
     border: 1px solid #ddd4ca;
@@ -173,9 +175,7 @@ const styles = `
     font-size: 14px;
   }
 
-  .lp-thead tr {
-    background: #2c2420;
-  }
+  .lp-thead tr { background: #2c2420; }
   .lp-th {
     padding: 14px 18px;
     text-align: left;
@@ -215,7 +215,6 @@ const styles = `
     vertical-align: middle;
   }
 
-  /* ID pill */
   .lp-id {
     display: inline-block;
     background: #f0ebe5;
@@ -227,92 +226,47 @@ const styles = `
     border-radius: 20px;
   }
 
-  /* Guest cell */
-  .lp-guest {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .lp-guest { display: flex; align-items: center; gap: 10px; }
   .lp-avatar {
-    width: 34px;
-    height: 34px;
+    width: 34px; height: 34px;
     border-radius: 50%;
     background: linear-gradient(135deg, #c9a96e, #e8c98a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-    flex-shrink: 0;
+    font-size: 14px; font-weight: 600; color: #fff; flex-shrink: 0;
   }
   .lp-guest-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    font-weight: 600;
-    color: #2c2420;
-    line-height: 1.2;
+    font-size: 17px; font-weight: 600; color: #2c2420; line-height: 1.2;
   }
 
-  /* Amount */
   .lp-amount {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: #4a3728;
-    white-space: nowrap;
+    font-size: 20px; font-weight: 600; color: #4a3728; white-space: nowrap;
   }
-  .lp-amount-sym {
-    font-size: 12px;
-    color: #c9a96e;
-    vertical-align: super;
-    margin-right: 1px;
-  }
+  .lp-amount-sym { font-size: 12px; color: #c9a96e; vertical-align: super; margin-right: 1px; }
 
-  /* Message */
   .lp-msg {
-    font-style: italic;
-    color: #8a7060;
-    font-size: 13px;
-    max-width: 260px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-style: italic; color: #8a7060; font-size: 13px;
+    max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .lp-no-msg { color: #c8bdb5; font-size: 13px; }
-
-  /* Date */
   .lp-date { color: #a0907f; font-size: 12px; white-space: nowrap; }
 
   /* ── States ── */
-  .lp-state {
-    padding: 64px 20px;
-    text-align: center;
-    background: #fff;
-  }
+  .lp-state { padding: 64px 20px; text-align: center; background: #fff; }
   .lp-state-icon { font-size: 38px; opacity: 0.45; margin-bottom: 14px; }
   .lp-state-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 300;
-    font-style: italic;
-    color: #b0a090;
+    font-size: 22px; font-weight: 300; font-style: italic; color: #b0a090;
   }
-  .lp-state-sub {
-    font-size: 12px;
-    color: #c8bdb5;
-    letter-spacing: 1px;
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
+  .lp-state-sub { font-size: 12px; color: #c8bdb5; letter-spacing: 1px; margin-top: 6px; text-transform: uppercase; }
   .lp-error { color: #c0503a; }
 
-  /* ── Skeleton rows ── */
+  /* ── Skeleton ── */
   .lp-skeleton-row td { padding: 18px; }
   .lp-skel {
-    height: 14px;
-    border-radius: 3px;
+    height: 14px; border-radius: 3px;
     background: linear-gradient(90deg, #ede8e3 25%, #f5f0eb 50%, #ede8e3 75%);
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
@@ -322,75 +276,120 @@ const styles = `
     to   { background-position: -200% 0; }
   }
 
-  /* ── Footer count ── */
+  /* ── Footer ── */
   .lp-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
     padding: 14px 18px;
-    background: #fdf9f6;
-    border-top: 1px solid #f0e8e0;
-    font-size: 12px;
-    color: #a0907f;
-    font-weight: 300;
+    background: #fdf9f6; border-top: 1px solid #f0e8e0;
+    font-size: 12px; color: #a0907f; font-weight: 300;
   }
-  .lp-footer strong {
-    font-weight: 500;
-    color: #6b584d;
+  .lp-footer strong { font-weight: 500; color: #6b584d; }
+
+  /* ── Mobile card styles (hidden on desktop) ── */
+  .mobile-cards { display: none; }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 700px) {
-    .lp-title { font-size: 32px; }
-    .lp-stat { max-width: none; }
-    .lp-msg { max-width: 120px; }
-    
+  .m-card {
+    background: #fff;
+    border: 1px solid #e8ddd5;
+    border-radius: 4px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 8px rgba(44,36,32,0.05);
+    animation: cardIn 0.3s ease both;
   }
+  .m-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .m-guest { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+  .m-avatar {
+    width: 38px; height: 38px; flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c9a96e, #e8c98a);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 600; color: #fff;
+  }
+  .m-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; color: #2c2420;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .m-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; color: #4a3728;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .m-amount-sym { font-size: 12px; color: #c9a96e; vertical-align: super; margin-right: 1px; }
+  .m-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px;
+  }
+  .m-msg {
+    font-style: italic; color: #8a7060; font-size: 13px;
+    flex: 1; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .m-no-msg { color: #c8bdb5; font-size: 12px; flex: 1; }
+  .m-date { font-size: 11px; color: #bfb0a3; white-space: nowrap; flex-shrink: 0; }
 
-  /* Phone: transform table into stacked cards for small screens */
+  /* ════════════════════════════════
+     MOBILE  ≤ 600px
+  ════════════════════════════════ */
   @media (max-width: 600px) {
-    .lp-main { padding: 20px 12px 40px; }
-    .lp-toolbar { gap: 8px; }
-    .lp-search { font-size: 14px; }
+    /* Hero */
+    .lp-hero { padding: 28px 16px 20px; }
+    .lp-title { font-size: 28px; letter-spacing: 1px; }
+    .lp-subtitle { font-size: 10px; letter-spacing: 2px; }
+    .lp-ornament { font-size: 14px; letter-spacing: 8px; margin-bottom: 8px; }
 
-    .lp-table { display: block; }
-    .lp-thead { display: none; }
-
-    .lp-tbody tr {
-      display: block;
-      background: #fff;
-      margin-bottom: 12px;
-      padding: 12px 14px;
-      border-radius: 6px;
-      border: 1px solid #efe6de;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    /* Stats: 2×2 grid */
+    .lp-stats { flex-wrap: wrap; }
+    .lp-stat {
+      flex: 1 1 50%;
+      max-width: 50%;
+      padding: 12px 8px;
+      border-bottom: 1px solid rgba(201,169,110,0.15);
     }
+    .lp-stat:nth-child(2n) { border-right: none; }
+    .lp-stat:nth-child(3),
+    .lp-stat:nth-child(4) { border-bottom: none; }
+    .lp-stat-val { font-size: 20px; }
+    .lp-stat-lbl { font-size: 9px; }
 
-    .lp-tbody tr:hover { background: #fff; }
+    /* Main */
+    .lp-main { padding: 16px 12px 48px; }
 
-    .lp-td {
-      display: block;
-      padding: 6px 0;
-      border: none;
-    }
+    /* Toolbar */
+    .lp-toolbar { flex-direction: column; align-items: stretch; gap: 8px; margin-bottom: 14px; }
+    .lp-section-label { display: none; }
+    .lp-search-wrap { min-width: 0; }
+    .lp-search { font-size: 15px; padding: 12px 12px 12px 34px; }
+    .lp-toolbar-btns { display: flex; gap: 8px; }
+    .lp-sort-btn { flex: 1; font-size: 11px; padding: 10px 6px; text-align: center; letter-spacing: 1px; }
 
-    .lp-td::before {
-      content: attr(data-label);
-      display: block;
-      font-size: 11px;
-      color: #c9a96e;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    /* Switch to card layout */
+    .lp-card { background: transparent; border: none; box-shadow: none; }
+    .lp-table { display: none; }
+    .mobile-cards { display: flex; flex-direction: column; gap: 10px; }
 
-    .lp-guest { gap: 8px; }
-    .lp-avatar { width: 40px; height: 40px; font-size: 16px; }
-    .lp-amount { font-size: 18px; }
-    .lp-msg { max-width: 100%; white-space: normal; overflow: visible; text-overflow: unset; }
-    .lp-date { font-size: 13px; }
-    .lp-id { font-size: 12px; padding: 4px 10px; }
+    /* Footer */
+    .lp-footer { flex-direction: column; gap: 4px; align-items: flex-start; padding: 12px; background: #fff; border: 1px solid #e8ddd5; border-radius: 2px; margin-top: 4px; }
+  }
 
-    .lp-footer { flex-direction: column; gap: 8px; align-items: flex-start; padding: 12px; }
+  /* Tablet 601–800px */
+  @media (min-width: 601px) and (max-width: 800px) {
+    .lp-title { font-size: 34px; }
+    .lp-stat { max-width: none; }
+    .lp-msg { max-width: 140px; }
+    .lp-main { padding: 28px 16px 48px; }
   }
 `;
 
@@ -500,43 +499,61 @@ export default function Home() {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <button
-              className={`lp-sort-btn${sortKey === "amount" ? " active" : ""}`}
-              onClick={() => handleSort("amount")}
-            >
-              By Amount {sortKey === "amount" ? (sortDir === "desc" ? "↓" : "↑") : ""}
-            </button>
-            <button
-              className={`lp-sort-btn${sortKey === "created_at" ? " active" : ""}`}
-              onClick={() => handleSort("created_at")}
-            >
-              By Date {sortKey === "created_at" ? (sortDir === "desc" ? "↓" : "↑") : ""}
-            </button>
+            <div className="lp-toolbar-btns">
+              <button
+                className={`lp-sort-btn${sortKey === "amount" ? " active" : ""}`}
+                onClick={() => handleSort("amount")}
+              >
+                By Amount {sortKey === "amount" ? (sortDir === "desc" ? "↓" : "↑") : ""}
+              </button>
+              <button
+                className={`lp-sort-btn${sortKey === "created_at" ? " active" : ""}`}
+                onClick={() => handleSort("created_at")}
+              >
+                By Date {sortKey === "created_at" ? (sortDir === "desc" ? "↓" : "↑") : ""}
+              </button>
+            </div>
           </div>
 
-          {/* Table */}
+          {/* Card */}
           <div className="lp-card">
             {loading ? (
-              <table className="lp-table">
-                <thead>
-                  <tr className="lp-thead" style={{ background: "#2c2420" }}>
-                    {["#", "Guest", "Amount", "Message", "Date"].map((h) => (
-                      <th key={h} className="lp-th">{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <tr key={i} className="lp-skeleton-row">
-                      <td data-label="#"><div className="lp-skel" style={{ width: 30 }} /></td>
-                      <td data-label="Guest"><div className="lp-skel" style={{ width: 140 }} /></td>
-                      <td data-label="Amount"><div className="lp-skel" style={{ width: 70 }} /></td>
-                      <td data-label="Message"><div className="lp-skel" style={{ width: 180 }} /></td>
-                      <td data-label="Date"><div className="lp-skel" style={{ width: 100 }} /></td>
+              <>
+                {/* Desktop skeleton */}
+                <table className="lp-table">
+                  <thead>
+                    <tr style={{ background: "#2c2420" }}>
+                      {["#", "Guest", "Amount", "Message", "Date"].map((h) => (
+                        <th key={h} className="lp-th">{h}</th>
+                      ))}
                     </tr>
+                  </thead>
+                  <tbody>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <tr key={i} className="lp-skeleton-row">
+                        <td><div className="lp-skel" style={{ width: 30 }} /></td>
+                        <td><div className="lp-skel" style={{ width: 140 }} /></td>
+                        <td><div className="lp-skel" style={{ width: 70 }} /></td>
+                        <td><div className="lp-skel" style={{ width: 180 }} /></td>
+                        <td><div className="lp-skel" style={{ width: 100 }} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {/* Mobile skeleton */}
+                <div className="mobile-cards" style={{ padding: 12, gap: 10 }}>
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <div key={i} className="m-card">
+                      <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 8 }}>
+                        <div className="lp-skel" style={{ width: 38, height: 38, borderRadius: "50%", flexShrink: 0 }} />
+                        <div className="lp-skel" style={{ flex: 1, height: 18 }} />
+                        <div className="lp-skel" style={{ width: 56, height: 22, flexShrink: 0 }} />
+                      </div>
+                      <div className="lp-skel" style={{ width: "55%", height: 13 }} />
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+              </>
             ) : error ? (
               <div className="lp-state">
                 <div className="lp-state-icon">⚠️</div>
@@ -550,6 +567,7 @@ export default function Home() {
               </div>
             ) : (
               <>
+                {/* ── Desktop table ── */}
                 <div style={{ overflowX: "auto" }}>
                   <table className="lp-table">
                     <thead className="lp-thead">
@@ -572,36 +590,58 @@ export default function Home() {
                     <tbody className="lp-tbody">
                       {filtered.map((g, index) => (
                         <tr key={g.id} style={{ animationDelay: `${index * 0.03}s` }}>
-                          <td className="lp-td" data-label="#">
-                            <span className="lp-id">{g.id}</span>
-                          </td>
-                          <td className="lp-td" data-label="Guest">
+                          <td className="lp-td"><span className="lp-id">{g.id}</span></td>
+                          <td className="lp-td">
                             <div className="lp-guest">
                               <div className="lp-avatar">{initials(g.guest_name)}</div>
                               <span className="lp-guest-name">{g.guest_name}</span>
                             </div>
                           </td>
-                          <td className="lp-td" data-label="Amount">
+                          <td className="lp-td">
                             <span className="lp-amount">
                               <span className="lp-amount-sym">$</span>
                               {Number(g.amount).toLocaleString()}
                             </span>
                           </td>
-                          <td className="lp-td" data-label="Message">
-                            {g.message
-                              ? <span className="lp-msg">"{g.message}"</span>
-                              : <span className="lp-no-msg">—</span>
-                            }
+                          <td className="lp-td">
+                            {g.message ? <span className="lp-msg">"{g.message}"</span> : <span className="lp-no-msg">—</span>}
                           </td>
-                          <td className="lp-td" data-label="Date">
-                            <span className="lp-date">
-                              {new Date(g.created_at).toLocaleString()}
-                            </span>
+                          <td className="lp-td">
+                            <span className="lp-date">{new Date(g.created_at).toLocaleString()}</span>
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+                </div>
+
+                {/* ── Mobile cards ── */}
+                <div className="mobile-cards" style={{ padding: 10 }}>
+                  {filtered.map((g, index) => (
+                    <div className="m-card" key={g.id} style={{ animationDelay: `${index * 0.04}s` }}>
+                      <div className="m-card-top">
+                        <div className="m-guest">
+                          <div className="m-avatar">{initials(g.guest_name)}</div>
+                          <span className="m-name">{g.guest_name}</span>
+                        </div>
+                        <span className="m-amount">
+                          <span className="m-amount-sym">$</span>
+                          {Number(g.amount).toLocaleString()}
+                        </span>
+                      </div>
+                      <div className="m-meta">
+                        {g.message
+                          ? <span className="m-msg">"{g.message}"</span>
+                          : <span className="m-no-msg">No message</span>
+                        }
+                        <span className="m-date">
+                          {new Date(g.created_at).toLocaleDateString(undefined, {
+                            month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
+                          })}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="lp-footer">
